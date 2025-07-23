@@ -19,7 +19,18 @@ indexRouter.post(
       }
       return true;
     }),
-  body("title").trim().notEmpty(),
+  body("title")
+    .trim()
+    .notEmpty(),
+  body("description")
+    .trim()
+    .notEmpty(),
+  body("price")
+    .trim()
+    .notEmpty(),
+  body("rating")
+    .trim()
+    .notEmpty(),
   createProduct
 );
 
