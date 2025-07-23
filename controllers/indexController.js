@@ -21,12 +21,12 @@ async function createProduct(req, res) {
   };
   const errors = validationResult(req).array();
   const locals = {
-    ...await prepareLocals(req),
+    ...(await prepareLocals(req)),
     errors: errors,
     values: productValues,
   };
   if (errors.length === 0) {
-    console.log(productValues);
+    db.createProduct(productValues);
     res.redirect("/");
   } else {
     res.render("pages/index", locals);
