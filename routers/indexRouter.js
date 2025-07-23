@@ -14,10 +14,12 @@ indexRouter.post(
   body("category")
     .trim()
     .custom((value) => {
-      if (value == "Select") {
+      if (value === "Select") {
         throw new Error("You must pick a category. Select isn't an option.");
       }
+      return true;
     }),
+  body("title").trim().notEmpty(),
   createProduct
 );
 

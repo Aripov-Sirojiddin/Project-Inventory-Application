@@ -8,37 +8,52 @@
   </li>
   <% }); %>
 </div>
-
 <form
   method="post"
   action="/new"
   style="display: flex; flex-direction: column; max-width: 12rem; margin: 1rem"
 >
   <select name="category" id="category">
-    <% ["Select","Clothing", "Electronics", "Jewelery",
-    "Books"].forEach((category) => {%>
-    <option value="<%= category %>"><%= category %></option>
+    <% ["Select","Clothing", "Electronics", "Jewelery", "Books"].forEach((category) => {%>
+      <option 
+        value="<%= category %>"
+        <% if(values.category == category) { %>
+          selected
+        <% } %>
+      >
+        <%= category %>
+      </option>
     <% }); %>
   </select>
-  <input type="text" name="title" id="title" placeholder="Title of product" />
+  <input 
+    type="text" 
+    name="title" 
+    id="title" 
+    placeholder="Title of product" 
+    value="<%= values.title %>"
+  />
   <textarea
     name="description"
     id="description"
     placeholder="A short description"
-  ></textarea>
+  ><%= values.description %></textarea>
   <input
     type="number"
+    step="any"
     min="1"
     name="price"
     id="price"
+    value="<%= values.price %>"
     placeholder="Price of the product"
   />
   <input
     type="number"
+    step="any"
     min="0"
     max="5"
     name="rating"
     id="rating"
+    value="<%= values.rating %>"
     placeholder="Rating of the product"
   />
   <input type="submit" value="Create Product" />

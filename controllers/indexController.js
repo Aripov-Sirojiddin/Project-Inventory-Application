@@ -27,7 +27,6 @@ async function createProduct(req, res) {
   };
   if (errors.length === 0) {
     console.log(productValues);
-    console.log("Added");
     res.redirect("/");
   } else {
     res.render("pages/index", locals);
