@@ -1,3 +1,14 @@
+<div class="error">
+  <% errors.forEach((error) => { %>
+  <li>
+    <a class="text-decoration-none" href="#<%= error.path %>">
+      "<%= error.value %>" is not a valid <%= error.path %>.
+      <br />- <%= error.msg %>
+    </a>
+  </li>
+  <% }); %>
+</div>
+
 <form
   method="post"
   action="/new"
@@ -30,5 +41,5 @@
     id="rating"
     placeholder="Rating of the product"
   />
-  <input type="submit" value="Create Product">
+  <input type="submit" value="Create Product" />
 </form>

@@ -1,6 +1,6 @@
 <% if(showForm) { %>
   <a href="/">Close Form</a>
-  <%- include("../partials/productForm.ejs"); %>
+  <%- include("../partials/productForm.ejs", {errors: errors, values: values}); %>
 <% } else { %>
   <a href="/new">Create a new product</a>
 <% } %>
