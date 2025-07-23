@@ -1,6 +1,9 @@
 <% if(showForm) { %>
+  <a href="/">Close Form</a>
   <%- include("../partials/productForm.ejs"); %>
-<% }; %>
+<% } else { %>
+  <a href="/new">Create a new product</a>
+<% } %>
 
 <% products.forEach((product) => { %>
   <%- include("../partials/product.ejs", {product: product}) %>
