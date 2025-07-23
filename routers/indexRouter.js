@@ -21,16 +21,20 @@ indexRouter.post(
     }),
   body("title")
     .trim()
-    .notEmpty(),
+    .notEmpty()
+    .withMessage("There is no product without proper title."),
   body("description")
     .trim()
-    .notEmpty(),
+    .notEmpty()
+    .withMessage("A product must have a proper description for search."),
   body("price")
     .trim()
-    .notEmpty(),
+    .isNumeric()
+    .withMessage("Must be a positive number."),
   body("rating")
     .trim()
-    .notEmpty(),
+    .isNumeric()
+    .withMessage("Must be a number between 0 and 5."),
   createProduct
 );
 

@@ -11,4 +11,5 @@ body {
 .error * {
   text-decoration: none;
   color: inherit;
+  margin-block: 1rem;
 }
