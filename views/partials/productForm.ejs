@@ -1,0 +1,34 @@
+<form
+  method="post"
+  action="/new"
+  style="display: flex; flex-direction: column; max-width: 12rem; margin: 1rem"
+>
+  <select name="category" id="category">
+    <% ["Select","Clothing", "Electronics", "Jewelery",
+    "Books"].forEach((category) => {%>
+    <option value="<%= category %>"><%= category %></option>
+    <% }); %>
+  </select>
+  <input type="text" name="title" id="title" placeholder="Title of product" />
+  <textarea
+    name="description"
+    id="description"
+    placeholder="A short description"
+  ></textarea>
+  <input
+    type="number"
+    min="1"
+    name="price"
+    id="price"
+    placeholder="Price of the product"
+  />
+  <input
+    type="number"
+    min="0"
+    max="5"
+    name="rating"
+    id="rating"
+    placeholder="Rating of the product"
+  />
+  <input type="submit" value="Create Product">
+</form>

@@ -1,3 +1,7 @@
-<% users.forEach((user) => { %>
-  <%- include("../partials/user.ejs", {user: user}) %>
+<% if(showForm) { %>
+  <%- include("../partials/productForm.ejs"); %>
+<% }; %>
+
+<% products.forEach((product) => { %>
+  <%- include("../partials/product.ejs", {product: product}) %>
 <% }); %>
