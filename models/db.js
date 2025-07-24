@@ -47,7 +47,7 @@ async function updateProduct(product) {
 }
 async function getFilteredProducts(filter) {
   const { rows } = await pool.query(
-    `SELECT * FROM products WHERE title ILIKE $1;`,
+    `SELECT * FROM products WHERE title ILIKE $1 OR description ILIKE $1;`,
     [`%${filter}%`]
   );
   return rows;
