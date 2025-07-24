@@ -10,13 +10,14 @@
 </div>
 <form
   method="post"
-  action="<%= action.url %>"
+  action="<%= action.url %>?_method=<%= action.method %>"
   style="
     display: flex; 
     flex-direction: column; 
     max-width: 12rem; 
     margin: 1rem;"
 >
+  <input type="hidden" name="id" id="id" value="<%= values.id != null ? values.id : NULL%>">
   <select name="category" id="category">
     <% ["Select","Clothing", "Electronics", "Jewelery", "Books"].forEach((category) => {%>
       <option 

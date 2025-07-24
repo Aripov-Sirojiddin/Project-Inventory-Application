@@ -55,27 +55,30 @@ async function editProductById(req, res) {
     action: {
       name: "Update",
       url: req.url,
-      method: "",
+      method: "PUT",
     },
   });
 }
 
 async function updateProduct(req, res) {
-  const { productId } = req.params;
-  const product = await db.getProductById(productId);
+  const newProductValues = {
+    ...req.body,
+  };
+  console.log(newProductValues);
   const errors = validationResult(req).array();
   if (errors.length === 0) {
-    res.redirect("/product/" + product.id);
+    console.log("updating product");
+    console.log(newProductValues);
+    res.redirect("/product/" + newProductValues.id);
   } else {
-    console.log(product);
     res.render("pages/productDetails", {
-      product: product,
+      product: newProductValues,
       errors: errors,
       showForm: true,
       action: {
         name: "Update",
         url: req.url,
-        method: "",
+        method: "PUT",
       },
     });
   }
