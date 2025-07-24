@@ -64,11 +64,9 @@ async function updateProduct(req, res) {
   const newProductValues = {
     ...req.body,
   };
-  console.log(newProductValues);
   const errors = validationResult(req).array();
   if (errors.length === 0) {
-    console.log("updating product");
-    console.log(newProductValues);
+    await db.updateProduct(newProductValues);
     res.redirect("/product/" + newProductValues.id);
   } else {
     res.render("pages/productDetails", {

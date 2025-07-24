@@ -32,8 +32,8 @@ async function updateProduct(product) {
   await pool.query(
     `
     UPDATE products
-    SET category="$2", title="$3", description="$4", price="$5", rating="$6"
-    WHERE id="$1";
+    SET category=$2, title=$3, description=$4, price=$5, rating=$6
+    WHERE id=$1;
     `,
     [
       product.id, //1
