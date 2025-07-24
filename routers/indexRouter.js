@@ -2,12 +2,14 @@ const { Router } = require("express");
 const {
   getAllProducts,
   createProduct,
+  getProductById,
 } = require("../controllers/indexController.js");
 const { body } = require("express-validator");
 
 const indexRouter = Router();
 
 indexRouter.get("/", getAllProducts);
+indexRouter.get("/product/:productId", getProductById);
 indexRouter.get("/new", getAllProducts);
 indexRouter.post(
   "/new",
@@ -27,10 +29,7 @@ indexRouter.post(
     .trim()
     .notEmpty()
     .withMessage("A product must have a proper description for search."),
-  body("price")
-    .trim()
-    .isNumeric()
-    .withMessage("Must be a positive number."),
+  body("price").trim().isNumeric().withMessage("Must be a positive number."),
   body("rating")
     .trim()
     .isNumeric()

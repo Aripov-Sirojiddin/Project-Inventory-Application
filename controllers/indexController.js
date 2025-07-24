@@ -33,7 +33,15 @@ async function createProduct(req, res) {
   }
 }
 
+async function getProductById(req, res) {
+  const { productId } = req.params;
+  const product = await db.getProductById(productId);
+  console.log(product)
+  res.render("pages/productDetails", { product: product[0] });
+}
+
 module.exports = {
   getAllProducts,
   createProduct,
+  getProductById,
 };

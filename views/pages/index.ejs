@@ -7,4 +7,5 @@
 
 <% products.forEach((product) => { %>
   <%- include("../partials/product.ejs", {product: product}) %>
+  <a href="/product/<%= product.id%>">Details</a>
 <% }); %>

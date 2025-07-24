@@ -21,7 +21,16 @@ async function createProduct(product) {
   );
 }
 
+async function getProductById(id) {
+  const { rows } = await pool.query("SELECT * FROM products WHERE id = $1", [
+    id,
+  ]);
+
+  return rows;
+}
+
 module.exports = {
   getAllProducts,
   createProduct,
+  getProductById,
 };
