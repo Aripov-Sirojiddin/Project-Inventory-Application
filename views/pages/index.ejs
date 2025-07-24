@@ -1,11 +1,14 @@
+<a class="button" href="/">Home</a>
+<form action="/" method="get">
+  <input type="text" name="search" id="search" />
+  <input type="submit" value="Search" class="button" />
+</form>
 <% if(showForm) { %>
-  <a class="button" href="/">Close Form</a>
-  <%- include("../partials/productForm.ejs", {errors: errors, values: values}); %>
+<a class="button" href="/">Close Form</a>
+<%- include("../partials/productForm.ejs", {errors: errors, values: values}); %>
 <% } else { %>
-  <a class="button" href="/new">Create a new product</a>
-<% } %>
-
-<% products.forEach((product) => { %>
-  <%- include("../partials/product.ejs", {product: product}) %>
-  <a class="button" href="/product/<%= product.id%>">Details</a>
+<a class="button" href="/new">Create a new product</a>
+<% } %> <% products.forEach((product) => { %> <%-
+include("../partials/product.ejs", {product: product}) %>
+<a class="button" href="/product/<%= product.id%>">Details</a>
 <% }); %>

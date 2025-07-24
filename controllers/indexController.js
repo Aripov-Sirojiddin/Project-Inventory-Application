@@ -17,7 +17,11 @@ async function prepareLocals(req) {
 }
 
 async function getAllProducts(req, res) {
-  res.render("pages/index", await prepareLocals(req));
+  const locals = await prepareLocals(req);
+  if (req.query.search) {
+    locals.products = await db.getFilteredProducts(req.query.search);
+  }
+  res.render("pages/index", locals);
 }
 
 async function createProduct(req, res) {
