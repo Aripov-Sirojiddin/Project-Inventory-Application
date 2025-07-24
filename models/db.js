@@ -1,27 +1,3 @@
-let products = [
-  {
-    category: "Clothing",
-    title: "Adibas - Waterproof Winbreaker",
-    description: "An awesome windbreaker for the Spring season.",
-    price: 39.99,
-    rating: 4.5,
-  },
-  {
-    category: "Clothing",
-    title: "Adibas - Waterproof Winbreaker",
-    description: "An awesome windbreaker for the Spring season.",
-    price: 39.99,
-    rating: 4.5,
-  },
-  {
-    category: "Clothing",
-    title: "Adibas - Waterproof Winbreaker",
-    description: "An awesome windbreaker for the Spring season.",
-    price: 39.99,
-    rating: 4.5,
-  },
-];
-
 const pool = require("./pool.js");
 
 async function getAllProducts() {
