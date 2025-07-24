@@ -7,6 +7,7 @@ async function prepareLocals(req) {
     products: products,
     errors: [],
     values: {},
+    searchValue: req.query.search,
     showForm: req.url == "/new",
     action: {
       name: "Create",
