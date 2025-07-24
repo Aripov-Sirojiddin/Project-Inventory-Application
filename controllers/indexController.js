@@ -8,6 +8,11 @@ async function prepareLocals(req) {
     showForm: req.url === "/new",
     errors: [],
     values: {},
+    action: {
+      name: "Create",
+      url: req.url,
+      method: "",
+    },
   };
 }
 
@@ -36,12 +41,50 @@ async function createProduct(req, res) {
 async function getProductById(req, res) {
   const { productId } = req.params;
   const product = await db.getProductById(productId);
-  console.log(product)
-  res.render("pages/productDetails", { product: product[0] });
+  res.render("pages/productDetails", { product: product, showForm: false });
+}
+
+async function editProductById(req, res) {
+  const { productId } = req.params;
+  const product = await db.getProductById(productId);
+  const errors = validationResult(req).array();
+  res.render("pages/productDetails", {
+    product: product,
+    errors: errors,
+    showForm: true,
+    action: {
+      name: "Update",
+      url: req.url,
+      method: "",
+    },
+  });
+}
+
+async function updateProduct(req, res) {
+  const { productId } = req.params;
+  const product = await db.getProductById(productId);
+  const errors = validationResult(req).array();
+  if (errors.length === 0) {
+    res.redirect("/product/" + product.id);
+  } else {
+    console.log(product);
+    res.render("pages/productDetails", {
+      product: product,
+      errors: errors,
+      showForm: true,
+      action: {
+        name: "Update",
+        url: req.url,
+        method: "",
+      },
+    });
+  }
 }
 
 module.exports = {
   getAllProducts,
   createProduct,
   getProductById,
+  editProductById,
+  updateProduct,
 };

@@ -1,4 +1,12 @@
-<div id="product-details">
   <a href="/">Home</a>
+<br>
+<div id="product-details">
+  <% if(showForm) { %>
+    <a href="/product/<%= product.id %>">Close Form</a>
+  <%- include("../partials/productForm.ejs", {errors: errors, values: product});
+  %> <% } else { %>
+    <a href="/edit/<%= product.id %>">Update product: <%= product.title %></a>
+  <% } %>
+
   <%- include("../partials/product", {product: product}) %>
 </div>

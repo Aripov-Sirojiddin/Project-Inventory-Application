@@ -10,7 +10,7 @@
 </div>
 <form
   method="post"
-  action="/new"
+  action="<%= action.url %>"
   style="
     display: flex; 
     flex-direction: column; 
@@ -60,5 +60,5 @@
     value="<%= values.rating %>"
     placeholder="Rating of the product"
   />
-  <input type="submit" value="Create Product" />
+  <input type="submit" value="<%= action.name %> Product" />
 </form>
