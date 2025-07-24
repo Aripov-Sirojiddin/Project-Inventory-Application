@@ -5,9 +5,9 @@ async function prepareLocals(req) {
   const products = await db.getAllProducts();
   return {
     products: products,
-    showForm: req.url === "/new",
     errors: [],
     values: {},
+    showForm: false,
     action: {
       name: "Create",
       url: req.url,
@@ -29,6 +29,7 @@ async function createProduct(req, res) {
     ...(await prepareLocals(req)),
     errors: errors,
     values: productValues,
+    showForm: true,
   };
   if (errors.length === 0) {
     db.createProduct(productValues);
