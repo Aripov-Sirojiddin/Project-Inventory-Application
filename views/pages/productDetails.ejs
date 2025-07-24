@@ -1,12 +1,15 @@
-  <a href="/">Home</a>
+  <a class="button" href="/">Home</a>
 <br>
 <div id="product-details">
   <% if(showForm) { %>
-    <a href="/product/<%= product.id %>">Close Form</a>
+    <a class="button" href="/product/<%= product.id %>">Close Form</a>
   <%- include("../partials/productForm.ejs", {errors: errors, values: product});
   %> <% } else { %>
-    <a href="/edit/<%= product.id %>">Update product: <%= product.title %></a>
+    <a class="button" href="/edit/<%= product.id %>">Update <%= product.title %></a>
   <% } %>
-
+  
   <%- include("../partials/product", {product: product}) %>
+  <form action="/delete/<%= product.id %>?_method=delete" method="post">
+    <input class="button" type="submit" value="Delete <%= product.title %>">
+  </form>
 </div>

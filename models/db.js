@@ -38,7 +38,7 @@ async function updateProduct(product) {
     [
       product.id, //1
       product.category, //2
-      product.title, //3  
+      product.title, //3
       product.description, //4
       product.price, //5
       product.rating, //6
@@ -46,9 +46,14 @@ async function updateProduct(product) {
   );
 }
 
+async function deleteProductById(id) {
+  await pool.query("DELETE FROM products WHERE id=$1", [id]);
+}
+
 module.exports = {
   getAllProducts,
   createProduct,
   getProductById,
   updateProduct,
+  deleteProductById,
 };

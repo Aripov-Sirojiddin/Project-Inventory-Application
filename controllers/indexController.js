@@ -7,7 +7,7 @@ async function prepareLocals(req) {
     products: products,
     errors: [],
     values: {},
-    showForm: false,
+    showForm: req.url == "/new",
     action: {
       name: "Create",
       url: req.url,
@@ -83,10 +83,18 @@ async function updateProduct(req, res) {
   }
 }
 
+async function deleteProduct(req, res) {
+  const { productId } = req.params;
+
+  await db.deleteProductById(productId);
+  res.redirect("/");
+}
+
 module.exports = {
   getAllProducts,
   createProduct,
   getProductById,
   editProductById,
   updateProduct,
+  deleteProduct,
 };
